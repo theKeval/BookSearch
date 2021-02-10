@@ -7,6 +7,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
+    buildFeatures {
+        dataBinding true
+    }
+
     defaultConfig {
         applicationId "com.example.booksearch"
         minSdkVersion 19
@@ -46,4 +50,7 @@ dependencies {
     // navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
+
+    // viewmodel and livedata
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
 }

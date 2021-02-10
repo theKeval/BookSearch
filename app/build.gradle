@@ -1,7 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+
 }
+apply plugin: "androidx.navigation.safeargs"
 
 android {
     compileSdkVersion 30
@@ -34,6 +38,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    androidExtensions {
+        experimental = true
+    }
+
 }
 
 dependencies {
@@ -53,4 +62,11 @@ dependencies {
 
     // viewmodel and livedata
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
+
+    // Retrofit with Moshi Converter
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+
+    // Moshi
+    implementation "com.squareup.moshi:moshi:1.9.3"
+    implementation "com.squareup.moshi:moshi-kotlin:1.9.3"
 }

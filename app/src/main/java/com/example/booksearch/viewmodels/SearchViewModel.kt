@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.booksearch.network.Book
 import com.example.booksearch.network.BooksApi
 import com.example.booksearch.network.SearchResult
 import kotlinx.coroutines.launch
@@ -51,6 +52,10 @@ class SearchViewModel: ViewModel() {
 
     fun newSearch(text: String) {
         searchBooks(text)
+    }
+
+    fun displayBookDetail(book: Book) {
+        TODO("Not yet implemented")
     }
 
 

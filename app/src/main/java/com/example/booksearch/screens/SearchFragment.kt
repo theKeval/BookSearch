@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.booksearch.R
+import com.example.booksearch.adapters.BookListAdapter
 import com.example.booksearch.databinding.FragmentSearchBinding
 import com.example.booksearch.viewmodels.SearchViewModel
 
@@ -36,7 +37,11 @@ class SearchFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        
+        val adapter = BookListAdapter(BookListAdapter.OnClickListener{
+            viewModel.displayBookDetail(it)
+        })
+
+        binding.rvBookList.adapter = adapter
 
         return binding.root
     }

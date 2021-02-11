@@ -8,8 +8,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class SearchResult(
 
-    val totalItems: Int,
-    val items: List<Book>
+    val totalItems: Int = 0,
+    val items: List<Book> = ArrayList()
 
 ) : Parcelable {
 
@@ -17,13 +17,13 @@ data class SearchResult(
 
 @Parcelize
 data class Book(
-    val id: String,
-    val selfLink: String,
+    val id: String = "",
+    val selfLink: String = "",
 
     @Json(name = "volumeInfo")
-    val bookInfo: BookInfo,
+    val bookInfo: BookInfo = BookInfo(),
 
-    val saleInfo: BookSaleInfo
+    val saleInfo: BookSaleInfo = BookSaleInfo()
 
 ) : Parcelable {
 
@@ -31,42 +31,42 @@ data class Book(
 
 @Parcelize
 data class BookInfo(
-    val title: String,
-    val subTitle: String,
-    val authors: List<String>,
-    val publisher: String,
-    val publishedDate: String,
-    val description: String,
-    val pageCount: Int,
-    val averageRating: Double,
-    val ratingsCount: Int,
+    val title: String = "",
+    val subtitle: String = "",
+    val authors: List<String> = ArrayList(),
+    val publisher: String = "",
+    val publishedDate: String = "",
+    val description: String = "",
+    val pageCount: Int = 0,
+    val averageRating: Double = 0.toDouble(),
+    val ratingsCount: Int = 0,
 
     @Json(name = "imageLinks")
-    val thumbnailLinks: ThumbnailLinks,
+    val thumbnailLinks: ThumbnailLinks = ThumbnailLinks("", ""),
 
-    val language: String,
-    val infoLink: String
+    val language: String = "",
+    val infoLink: String = ""
 ) : Parcelable {
 
 }
 
 @Parcelize
 data class ThumbnailLinks(
-    val thumbnail: String,
-    val smallThumbnail: String
+    val thumbnail: String = "",
+    val smallThumbnail: String = ""
 ) : Parcelable {
 
 }
 
 @Parcelize
 data class BookSaleInfo(
-    val country: String,
+    val country: String = "",
 
     @Json(name = "listPrice")
-    val actualPrice: BookPrice,
+    val actualPrice: BookPrice = BookPrice(0.toDouble(), ""),
 
     @Json(name = "retailPrice")
-    val sellingPrice: BookPrice
+    val sellingPrice: BookPrice = BookPrice(0.toDouble(), "")
 
 ) : Parcelable {
 
@@ -74,8 +74,8 @@ data class BookSaleInfo(
 
 @Parcelize
 data class BookPrice(
-    val amount: Double,
-    val currencyCode: String
+    val amount: Double = 0.toDouble(),
+    val currencyCode: String = ""
 ) : Parcelable {
 
 }

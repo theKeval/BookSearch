@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="book"
             type="com.example.booksearch.network.Book" />
@@ -12,10 +13,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/teal_700">
 
         <ImageView
             android:id="@+id/imageView"
+            imageUrl="@{book.bookInfo.thumbnailLinks.smallThumbnail}"
             android:layout_width="80dp"
             android:layout_height="110dp"
             android:layout_marginStart="16dp"
@@ -25,41 +28,54 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@{book.bookInfo.title}"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/tv_rating"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView"
-            app:layout_constraintVertical_chainStyle="spread_inside" />
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            tools:text="title" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_rating"
+            setRating="@{book.bookInfo}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/tv_price"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="rating" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_price"
+            setPrice="@{book.saleInfo.sellingPrice.amount}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="TextView"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_rating"
+            tools:text="price" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

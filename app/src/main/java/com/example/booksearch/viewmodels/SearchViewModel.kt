@@ -26,17 +26,18 @@ class SearchViewModel: ViewModel() {
         get() = _searchResult
 
     init {
-        searchBooks(searchText.value)
+        _searchResult.value = SearchResult(0, ArrayList())
+        // searchBooks()
     }
 
-    private fun searchBooks(text: String?) {
-        if (!text.isNullOrEmpty()) {
+    private fun searchBooks() {
+        if (searchText.value.toString().isNotEmpty()) {
 
             viewModelScope.launch {
                 _status.value = BooksApiStatus.LOADING
 
                 try {
-                    _searchResult.value = BooksApi.retrofitService.getBooks(text)
+                    _searchResult.value = BooksApi.retrofitService.getBooks(searchText.value.toString())
                     _status.value = BooksApiStatus.DONE
                 }
                 catch (t: Throwable) {
@@ -49,9 +50,12 @@ class SearchViewModel: ViewModel() {
         }
     }
 
+    fun updateSearchText(text: String) {
+        _searchText.value = text
+    }
 
-    fun newSearch(text: String) {
-        searchBooks(text)
+    fun newSearch() {
+        searchBooks()
     }
 
     fun displayBookDetail(book: Book) {

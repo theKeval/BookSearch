@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.booksearch.R
 import com.example.booksearch.adapters.BookListAdapter
@@ -34,6 +35,10 @@ class SearchFragment : Fragment() {
         // binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container,false)
         binding = FragmentSearchBinding.inflate(inflater)
 
+        binding.btnSearch.setOnClickListener {
+            viewModel.updateSearchText(binding.etSearch.text.toString())
+        }
+
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
@@ -42,6 +47,10 @@ class SearchFragment : Fragment() {
         })
 
         binding.rvBookList.adapter = adapter
+
+        viewModel.searchText.observe(viewLifecycleOwner, Observer {
+            viewModel.newSearch()
+        })
 
         return binding.root
     }

@@ -59,7 +59,7 @@ class SearchViewModel : ViewModel() {
     }
 
     fun displayBookDetail(book: Book) {
-        TODO("Not yet implemented")
+        // todo: need to work on it
     }
 
 

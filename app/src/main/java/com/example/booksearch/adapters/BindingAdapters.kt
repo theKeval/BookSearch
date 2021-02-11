@@ -18,9 +18,11 @@ fun bindImage(thumbnail: ImageView, imgUrl: String?) {
         val imgUri = it.toUri().buildUpon().scheme("https").build()
         Glide.with(thumbnail.context)
             .load(imgUri)
-            .apply(RequestOptions()
-                .placeholder(R.drawable.loading_animation)
-                .error(R.drawable.ic_broken_image))
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_broken_image)
+            )
             .into(thumbnail)
     }
 }

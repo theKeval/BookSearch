@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.booksearch.databinding.BooklistItemViewBinding
 import com.example.booksearch.network.Book
 
-class BookListAdapter(private val onClickListener: OnClickListener) : ListAdapter<Book, BookListAdapter.BookViewHolder>(BookDiffCallback) {
+class BookListAdapter(private val onClickListener: OnClickListener) :
+    ListAdapter<Book, BookListAdapter.BookViewHolder>(BookDiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         return BookViewHolder(BooklistItemViewBinding.inflate(LayoutInflater.from(parent.context)))
     }
@@ -22,7 +23,8 @@ class BookListAdapter(private val onClickListener: OnClickListener) : ListAdapte
     }
 
 
-    class BookViewHolder(private var binding: BooklistItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
+    class BookViewHolder(private var binding: BooklistItemViewBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(book: Book) {
             binding.book = book
             binding.executePendingBindings()

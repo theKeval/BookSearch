@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 enum class BooksApiStatus { LOADING, ERROR, DONE }
 
-class SearchViewModel: ViewModel() {
+class SearchViewModel : ViewModel() {
 
     private var _status = MutableLiveData<BooksApiStatus>()
     val status: LiveData<BooksApiStatus>
@@ -19,7 +19,7 @@ class SearchViewModel: ViewModel() {
 
     private var _searchText = MutableLiveData<String>()
     val searchText: LiveData<String>
-        get() =_searchText
+        get() = _searchText
 
     private var _searchResult = MutableLiveData<SearchResult>()
     val searchResult: LiveData<SearchResult>
@@ -37,10 +37,10 @@ class SearchViewModel: ViewModel() {
                 _status.value = BooksApiStatus.LOADING
 
                 try {
-                    _searchResult.value = BooksApi.retrofitService.getBooks(searchText.value.toString())
+                    _searchResult.value =
+                        BooksApi.retrofitService.getBooks(searchText.value.toString())
                     _status.value = BooksApiStatus.DONE
-                }
-                catch (t: Throwable) {
+                } catch (t: Throwable) {
                     _status.value = BooksApiStatus.ERROR
                     _searchResult.value = SearchResult(0, ArrayList())
                 }

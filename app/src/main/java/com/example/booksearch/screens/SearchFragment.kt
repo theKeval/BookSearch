@@ -42,7 +42,7 @@ class SearchFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        val adapter = BookListAdapter(BookListAdapter.OnClickListener{
+        val adapter = BookListAdapter(BookListAdapter.OnClickListener {
             viewModel.displayBookDetail(it)
         })
 

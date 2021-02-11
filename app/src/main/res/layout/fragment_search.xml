@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.booksearch.viewmodels.SearchViewModel" />
@@ -46,18 +47,18 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_bookList"
+            listData="@{viewModel.searchResult.items}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bookListHeader"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            listData="@{viewModel.searchResult.items}"/>
+            app:layout_constraintTop_toBottomOf="@+id/bookListHeader" />
 
         <Button
             android:id="@+id/btn_search"
